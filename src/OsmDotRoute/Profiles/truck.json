@@ -1,0 +1,63 @@
+{
+  "name": "truck",
+  "vehicleType": "hgv",
+  "ignoreOneway": false,
+  "speedMultiplier": 0.75,
+  "accessTagKeys": ["access", "vehicle", "motor_vehicle", "hgv"],
+  "highway": {
+    "motorway":       { "speedKmh": 90, "access": "yes" },
+    "motorway_link":  { "speedKmh": 90, "access": "yes" },
+    "trunk":          { "speedKmh": 80, "access": "yes" },
+    "trunk_link":     { "speedKmh": 80, "access": "yes" },
+    "primary":        { "speedKmh": 80, "access": "yes" },
+    "primary_link":   { "speedKmh": 80, "access": "yes" },
+    "secondary":      { "speedKmh": 60, "access": "yes" },
+    "secondary_link": { "speedKmh": 60, "access": "yes" },
+    "tertiary":       { "speedKmh": 50, "access": "yes" },
+    "tertiary_link":  { "speedKmh": 50, "access": "yes" },
+    "unclassified":   { "speedKmh": 40, "access": "yes" },
+    "residential":    { "speedKmh": 40, "access": "yes" },
+    "road":           { "speedKmh": 30, "access": "yes" },
+    "service":        { "speedKmh": 20, "access": "yes" },
+    "track":          { "speedKmh": 5,  "access": "yes" },
+    "living_street":  { "speedKmh": 5,  "access": "yes" },
+    "pedestrian":     { "speedKmh": 5,  "access": "yes" },
+    "footway":        { "speedKmh": 5,  "access": "no" },
+    "path":           { "speedKmh": 5,  "access": "no" },
+    "cycleway":       { "speedKmh": 5,  "access": "no" },
+    "steps":          { "speedKmh": 3,  "access": "no" },
+    "bridleway":      { "speedKmh": 5,  "access": "no" }
+  },
+  "accessValueMap": {
+    "yes": "allow",
+    "permissive": "allow",
+    "destination": "allow",
+    "designated": "allow",
+    "delivery": "allow",
+    "customers": "allow",
+    "no": "deny",
+    "private": "deny",
+    "agricultural": "deny",
+    "forestry": "deny"
+  },
+  "maxspeedTagKey": "maxspeed",
+  "maxspeedUnitDefault": "kmh",
+  "fallback": { "speedKmh": 10, "access": "no" },
+  "speedBounds": { "minKmh": 5, "maxKmh": 90 },
+  "vehicleLimits": {
+    "maxWeightTon": 20.0,
+    "maxHeightMeter": 3.8,
+    "maxWidthMeter": 2.5
+  },
+  "difficulty": {
+    "flooding":     { "speedFactor": 0.2, "canPass": true  },
+    "liquefaction": { "speedFactor": 0.3, "canPass": true  },
+    "landslide":    { "speedFactor": 0.0, "canPass": false },
+    "construction": { "speedFactor": 0.2, "canPass": true  },
+    "obstacle":     { "speedFactor": 0.4, "canPass": true  },
+    "congestion":   { "speedFactor": 0.3, "canPass": true  },
+    "snow":         { "speedFactor": 0.3, "canPass": true  },
+    "ice":          { "speedFactor": 0.2, "canPass": true  }
+  },
+  "difficultyDefault": { "speedFactor": 1.0, "canPass": true }
+}

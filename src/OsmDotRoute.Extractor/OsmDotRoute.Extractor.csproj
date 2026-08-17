@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>OsmDotRoute.Extractor</RootNamespace>
+    <AssemblyName>osmdotroute-extractor</AssemblyName>
+    <Description>OSM PBF から .odrg バイナリグラフを抽出する CLI ツール (Phase 2 ステップ 3)。</Description>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="3.0.0-preview.4.26230.115" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OsmDotRoute\OsmDotRoute.csproj" />
+    <ProjectReference Include="..\OsmDotRoute.Pbf\OsmDotRoute.Pbf.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="OsmDotRoute.Tests" />
+    <InternalsVisibleTo Include="MapVerifier.Server" />
+    <InternalsVisibleTo Include="Sandbox.Server" />
+  </ItemGroup>
+
+</Project>

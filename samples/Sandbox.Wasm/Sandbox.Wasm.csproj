@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Sandbox.Wasm</RootNamespace>
+    <AssemblyName>Sandbox.Wasm</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- J-1: 既定の IL インタプリタを採用。AOT (RunAOTCompilation) は有効化しない（性能不足が判明したら再検討） -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\OsmDotRoute\OsmDotRoute.csproj" />
+  </ItemGroup>
+
+  <!-- 事前ビルド .odrg（J-3: 東京駅周辺）を静的アセットとして同梱する。
+       実体は samples/Data/tokyo.odrg（git 追跡済み）を流用し、wwwroot へはビルド時コピー（git 追跡しない）。 -->
+  <Target Name="CopySandboxOdrg" BeforeTargets="ResolveStaticWebAssetsInputs;Build">
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\..\Data\tokyo.odrg"
+          DestinationFiles="$(MSBuildProjectDirectory)\wwwroot\data\tokyo.odrg"
+          SkipUnchangedFiles="true" />
+  </Target>
+</Project>

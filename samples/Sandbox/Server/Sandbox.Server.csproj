@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Sandbox.Server</RootNamespace>
+    <AssemblyName>Sandbox.Server</AssemblyName>
+    <Version>1.0.0</Version>
+    <IsPackable>false</IsPackable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\OsmDotRoute\OsmDotRoute.csproj" />
+    <ProjectReference Include="..\..\..\src\OsmDotRoute.Extractor\OsmDotRoute.Extractor.csproj" />
+  </ItemGroup>
+</Project>

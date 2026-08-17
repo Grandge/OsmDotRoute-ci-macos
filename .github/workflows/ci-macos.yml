@@ -1,0 +1,35 @@
+name: CI (macOS / Apple Silicon)
+
+# OsmDotRoute の macOS (Apple Silicon / ARM64) クロスプラットフォーム検証用ミラーリポジトリ。
+# 本体 Grandge/OsmDotRoute から Documents/ と samples/Data/tokyo.odrg を除外してミラーされる（一方向同期）。
+# 検証主眼は .odrg の MMF / GetSpan<T> 経路が ARM64・16KB ページ環境で破綻しないこと。
+# samples/Data/tsushima.odrg はテスト必須フィクスチャのため同梱される。
+#
+# このファイルは本体リポジトリの .mirror/ が正本。mirror.yml が同期時に
+# ミラーの .github/workflows/ci-macos.yml として注入する（本体では稼働しない）。
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    name: build & test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      # tests/OsmDotRoute.Tests はクロスプラットフォームなコア依存グラフ。
+      # MMF round-trip（OdrgReaderTests）と同梱 tsushima.odrg を実読する Native 系で .odrg 経路を実テストする。
+      - name: Test
+        run: dotnet test tests/OsmDotRoute.Tests/OsmDotRoute.Tests.csproj -c Release

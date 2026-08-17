@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>OsmDotRoute</RootNamespace>
+    <AssemblyName>OsmDotRoute</AssemblyName>
+    <Description>.NET native OSM routing library with dynamic restriction support.</Description>
+    <!-- Phase 3 ステップ 3A.2: OdrgMmfHandle で MMF ビューを byte* で直接読むため必要 -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="OsmDotRoute.Tests" />
+    <InternalsVisibleTo Include="OsmDotRoute.Benchmarks" />
+    <InternalsVisibleTo Include="osmdotroute-extractor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Profiles\car.json" />
+    <EmbeddedResource Include="Profiles\pedestrian.json" />
+    <EmbeddedResource Include="Profiles\bicycle.json" />
+    <EmbeddedResource Include="Profiles\truck.json" />
+    <EmbeddedResource Include="Profiles\ambulance.json" />
+    <EmbeddedResource Include="Profiles\fire_engine.json" />
+    <EmbeddedResource Include="Profiles\disaster.json" />
+  </ItemGroup>
+
+</Project>
